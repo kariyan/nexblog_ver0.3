@@ -3,12 +3,16 @@ package com.namoo.mybatis.blog;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.namoo.mybatis.blog.AuthorDao;
 import com.namoo.mybatis.blog.domain.Author;
 import com.namoo.mybatis.blog.impl.AuthorDaoImpl;
 
@@ -58,27 +62,63 @@ public class AuthorDaoTest {
 	@Test
 	public void testFindAuthorsByIds() {
 		
-		//TODO
+		List<String> ids = new ArrayList<String>();
+		ids.add("demonpark");
+		ids.add("kimgisa");
+		
+		List<Author> authors = dao.findAuthorsByIds(ids);
+		assertEquals(2,authors.size());
 	}
 	
 	@Test
 	public void testFindAuthorByCondition() {
 		
-		//TODO
+		Map<String,String> conditionMap = new HashMap<String,String>();
+		conditionMap.put("id", "demonpark");
+
+		List<Author> authors = dao.findAuthorByCondition(conditionMap);
+		
+		assertEquals(1,authors.size());
+		
+		conditionMap.remove("id");
+		authors = dao.findAuthorByCondition(conditionMap);
+		assertEquals(4,authors.size());
 		
 	}
 	
 	@Test
 	public void testFindAuthorByConditionByBuilder() {
 		
-		//TODO
+		Map<String,String> conditionMap = new HashMap<String,String>();
+		conditionMap.put("id", "demonpark");
+		
+		List<Author> authors = dao.findAuthorByConditionByBuilder(conditionMap);
+		
+		assertEquals(1,authors.size());
+		assertEquals("¹Ú¼®Àç",authors.get(0).getName());
+		
+		conditionMap.remove("id");
+		conditionMap.put("id", "kimgisa");
+		conditionMap.put("name", "±èÇö¿À");
+		authors = dao.findAuthorByConditionByBuilder(conditionMap);
+		assertEquals("±èÇö¿À",authors.get(0).getName());	
 
 	}	
 	
 	@Test
 	public void testUpdateAuthor() {
 		
-		//TODO
+		String id = "demonPark";
+		Author author = dao.findAuthor(id);
+		assertEquals("demonpark@nextree.co.kr", author.getEmail());
+		
+		author.setEmail("demonpsj@nextree.co.kr");
+		
+		dao.updateAuthor(author);
+		
+		Author updateAuthor = dao.findAuthor(id);
+		
+		assertEquals("demonpark@nextree.co.kr", updateAuthor.getEmail());
 		
 	}
 	
