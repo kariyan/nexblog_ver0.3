@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.namoo.mybatis.blog.mapper.BlogMapper">
+
+	<resultMap id="blogMap" type="Blog" >
+		<!-- Nested Select -->
+	</resultMap>
+		
+	<select id="findBlogsByTitle" parameterType="hashmap" resultMap="blogMap">
+		<!-- Nested Select -->
+	</select>
+ 
+ 	<select id="findBlogByAuthorId" parameterType="string" resultMap="blogMap">
+ 		<!-- Nested Select -->
+ 	</select>
+ 
+    <resultMap id="blogWithAuthorMap" type="Blog" >
+		<!-- Nested Result -->
+	</resultMap>    
+    
+    <select id="selectBlogWithAuthor" parameterType="int"
+		resultMap="blogWithAuthorMap">
+		SELECT
+		B.id as blog_id,
+		B.title as blog_title,
+		B.author_id as blog_author_id,
+		A.id as author_id,
+		A.password as author_password,
+		A.name as author_name
+		FROM Blog_tb B
+		LEFT OUTER JOIN Author_tb A on B.author_id = A.id
+		WHERE B.id = #{id}
+	</select>
+
+
+	<resultMap id="blogWithPostMap" type="Blog">
+		<!-- TODO -->
+	</resultMap>
+
+	<select id="selectBlogWithPost" parameterType="int" resultMap="blogWithPostMap">
+		SELECT
+		B.id as blog_id,
+		B.title as blog_title,
+		B.author_id as blog_author_id,
+		A.id as author_id,
+		A.password as author_password,
+		A.name as author_name,
+		P.id,
+		P.subject,
+		P.contents
+		FROM Blog_tb B
+		LEFT OUTER JOIN Author_tb A on B.author_id = A.id
+		LEFT OUTER JOIN Post_tb P on B.id = P.blog_id
+		WHERE B.id = #{id}
+	</select> 
+	
+	
+	<resultMap id="selectBlogMap" type="Blog" >
+		<!-- Nested Result -->	
+	</resultMap>
+	
+	
+	<select id="selectBlog" parameterType="int" resultMap="selectBlogMap">
+		SELECT
+		B.id as blog_id,
+		B.title as blog_title,
+		B.author_id as blog_author_id,
+		P.id,
+		P.subject,
+		P.contents
+		FROM Blog_tb B
+		LEFT OUTER JOIN Post_tb P on B.id = P.blog_id
+		WHERE B.id = #{id}
+	</select>  
+ 
+</mapper>
+

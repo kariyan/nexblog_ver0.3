@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.namoo.mybatis.blog.mapper.AuthorMapper">
+
+	<resultMap id="authorMap" type="Author">
+		<id column="id" property="id" javaType="string" jdbcType="VARCHAR" />
+		<result property="name" column="name" javaType="string" jdbcType="VARCHAR"/>
+		<result property="password" column="password" javaType="string" jdbcType="VARCHAR"/>
+		<result property="email" column="email" javaType="string" jdbcType="VARCHAR"/>	   
+		
+		<!-- reuse resultMap join column rename  -->
+		 <!--  TODO -->
+        <!--    	reuse end -->   	
+	</resultMap>
+
+	<sql id="selectAuthor">
+		SELECT id, password, name, email 
+		FROM author_tb 
+	</sql>
+
+	<select id="findAllAuthors" resultMap="authorMap">
+		<include refid="selectAuthor"/>
+		ORDER BY ID DESC
+	</select>
+
+	<select id="findAuthor" parameterType="string" resultType="Author" >
+		<include refid="selectAuthor"/> 
+		WHERE id = #{id, jdbcType=VARCHAR}
+	</select>
+	
+	<insert id="registAuthor" parameterType="Author">
+		INSERT INTO author_tb (id, password, name, email)
+		values(#{id},#{password},#{name},#{email})
+	</insert>
+	 	
+</mapper>
