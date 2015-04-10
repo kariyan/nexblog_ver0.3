@@ -37,7 +37,7 @@ public class AuthorDaoTest {
 		List<Author> authors = dao.findAllAuthors();
 		assertEquals(4, authors.size());
 		assertEquals("syhan", authors.get(0).getId());
-		assertEquals("±èÇö¿À", authors.get(1).getName());
+		assertEquals("ê¹€í˜„ì˜¤", authors.get(1).getName());
 		assertEquals("jhheo@nextree.co.kr", authors.get(2).getEmail());		
 	}
 	
@@ -46,7 +46,7 @@ public class AuthorDaoTest {
 		
 		Author author = dao.findAuthor("demonpark");
 		
-		assertEquals("¹Ú¼®Àç", author.getName());
+		assertEquals("ë°•ì„ì¬", author.getName());
 		assertEquals("demonpark@nextree.co.kr", author.getEmail());
 	}
 	
@@ -55,7 +55,7 @@ public class AuthorDaoTest {
 		
 		Author author = dao.findAuthorByMapper("demonpark");
 		
-		assertEquals("¹Ú¼®Àç", author.getName());
+		assertEquals("ë°•ì„ì¬", author.getName());
 		assertEquals("demonpark@nextree.co.kr", author.getEmail());
 	}
 	
@@ -95,13 +95,13 @@ public class AuthorDaoTest {
 		List<Author> authors = dao.findAuthorByConditionByBuilder(conditionMap);
 		
 		assertEquals(1,authors.size());
-		assertEquals("¹Ú¼®Àç",authors.get(0).getName());
+		assertEquals("ë°•ì„ì¬",authors.get(0).getName());
 		
 		conditionMap.remove("id");
 		conditionMap.put("id", "kimgisa");
-		conditionMap.put("name", "±èÇö¿À");
+		conditionMap.put("name", "ê¹€í˜„ì˜¤");
 		authors = dao.findAuthorByConditionByBuilder(conditionMap);
-		assertEquals("±èÇö¿À",authors.get(0).getName());	
+		assertEquals("ê¹€í˜„ì˜¤",authors.get(0).getName());	
 
 	}	
 	
@@ -128,7 +128,7 @@ public class AuthorDaoTest {
 		List<Author> authors = dao.findAllAuthors();
 		assertEquals(3,authors.size());
 		
-		Author insertAuthor = new Author("»ğÀÔÀ¯Àú","0000","insertUser@nextree.co.kr");
+		Author insertAuthor = new Author("ì‚½ì…ìœ ì €","0000","insertUser@nextree.co.kr");
 		insertAuthor.setId("insertUser");
 		
 		dao.registAuthor(insertAuthor);

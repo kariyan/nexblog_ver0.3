@@ -2,8 +2,8 @@ package com.namoo.mybatis.blog.domain;
 
 public enum Gender {
 	//
-	Male("M", "³²¼º"),
-	Female("F", "¿©¼º");
+	Male("M", "ë‚¨ì„±"),
+	Female("F", "ì—¬ì„±");
 	
 	private String code;
 	private String krName;

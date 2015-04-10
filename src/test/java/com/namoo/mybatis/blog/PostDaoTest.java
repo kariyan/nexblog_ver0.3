@@ -53,7 +53,7 @@ public class PostDaoTest {
 		post.setAuthor(blog.getAuthor());
 		post.setBlog(blog);
 		post.setSubject("jpa");
-		post.setContents("ejb3øÕ jpa");
+		post.setContents("ejb3ÏôÄ jpa");
 		
 		postDao.registPost(post);
 		
@@ -62,7 +62,7 @@ public class PostDaoTest {
 		assertEquals(beforeSize+1, blog.getPosts().size());
 		
 		assertEquals("jpa", blog.getPosts().get(beforeSize).getSubject());
-		//¿¸√º TEST¿ª ¿ß«ÿ insert Post ªË¡¶
+		//Ï†ÑÏ≤¥ TESTÏùÑ ÏúÑÌï¥ insert Post ÏÇ≠Ï†ú
 		List<Post> posts= postDao.findPostsByBlogId(blog.getId());
 		int regPostId = posts.get(posts.size()-1).getId();
 		int deleteCount = postDao.deletePost(regPostId);

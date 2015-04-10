@@ -31,7 +31,7 @@ public class BlogDaoImpl implements BlogDao {
 	
 	@Override
 	public Blog findBlogByAuthorId(String authorId){
-		// TODO ¸ÅÆÛ°´Ã¼¸¦ »ı¼ºÇÏ¿© Sql¸ÅÇÎ¹® È£ÃâÇÏ±â
+		// TODO ë§¤í¼ê°ì²´ë¥¼ ìƒì„±í•˜ì—¬ Sqlë§¤í•‘ë¬¸ í˜¸ì¶œí•˜ê¸°
 		return null;
 	}
 	
@@ -44,7 +44,7 @@ public class BlogDaoImpl implements BlogDao {
 
 	@Override
 	public List<Blog> findBlogsByTitle(String title) {
-		// TODO sessionÀÇ ¸Ş¼Òµå¸¦ »ç¿ëÇÏ¿© Sql¸ÅÇÎ¹® È£ÃâÇÏ±â
+		// TODO sessionì˜ ë©”ì†Œë“œë¥¼ ì‚¬ìš©í•˜ì—¬ Sqlë§¤í•‘ë¬¸ í˜¸ì¶œí•˜ê¸°
 		return null;
 	}
 	

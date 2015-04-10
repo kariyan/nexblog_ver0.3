@@ -38,22 +38,22 @@ public class BlogDaoTest {
 	public void testFindBlog() {
 		Blog blog = dao.findBlog(1);
 
-		assertEquals("ÇÏ´Ã¹Ù¶÷º°", blog.getTitle());
+		assertEquals("í•˜ëŠ˜ë°”ëŒë³„", blog.getTitle());
 		assertEquals("demonpark", blog.getAuthor().getId());
 
 		assertNotNull(blog.getPosts());
 		assertEquals(2, blog.getPosts().size());
 
 		assertEquals("mybatis", blog.getPosts().get(0).getSubject());
-		assertEquals("mybatisÀÇ ÀÌÇØ¿Í Àû¿ë", blog.getPosts().get(0).getContents());
+		assertEquals("mybatisì˜ ì´í•´ì™€ ì ìš©", blog.getPosts().get(0).getContents());
 		assertEquals("mybatis3", blog.getPosts().get(1).getSubject());
-		assertEquals("mybatis 3.0 ¹«ÀÛÁ¤ µû¶óÇÏ±â", blog.getPosts().get(1).getContents());
+		assertEquals("mybatis 3.0 ë¬´ì‘ì • ë”°ë¼í•˜ê¸°", blog.getPosts().get(1).getContents());
 	}
 
 	@Test
 	public void testFindBlogsByTitle() {
 
-		List<Blog> blogs = dao.findBlogsByTitle("ÇÏ´Ã");
+		List<Blog> blogs = dao.findBlogsByTitle("í•˜ëŠ˜");
 
 		assertEquals(1, blogs.size());
 		assertEquals("demonpark", blogs.get(0).getAuthor().getId());
@@ -64,7 +64,7 @@ public class BlogDaoTest {
 		Blog blog = dao.findBlogByAuthorId("demonpark");
 
 		assertEquals(1, blog.getId());
-		assertEquals("ÇÏ´Ã¹Ù¶÷º°", blog.getTitle());
+		assertEquals("í•˜ëŠ˜ë°”ëŒë³„", blog.getTitle());
 
 	}
 	
@@ -72,7 +72,7 @@ public class BlogDaoTest {
 	public void testSelectBlogWithAuthor() {
 		Blog blog = dao.selectBlogWithAuthor(1);
 		
-		assertEquals("¹Ú¼®Àç",blog.getAuthor().getName());
+		assertEquals("ë°•ì„ì¬",blog.getAuthor().getName());
 	}
 	
 	@Test
@@ -83,22 +83,22 @@ public class BlogDaoTest {
 		assertEquals(2, blog.getPosts().size());
 
 		assertEquals("mybatis", blog.getPosts().get(0).getSubject());
-		assertEquals("mybatisÀÇ ÀÌÇØ¿Í Àû¿ë", blog.getPosts().get(0).getContents());
+		assertEquals("mybatisì˜ ì´í•´ì™€ ì ìš©", blog.getPosts().get(0).getContents());
 		assertEquals("mybatis3", blog.getPosts().get(1).getSubject());
-		assertEquals("mybatis 3.0 ¹«ÀÛÁ¤ µû¶óÇÏ±â", blog.getPosts().get(1).getContents());
+		assertEquals("mybatis 3.0 ë¬´ì‘ì • ë”°ë¼í•˜ê¸°", blog.getPosts().get(1).getContents());
 	}
 	
 	@Test
 	public void testFindBlogByConditionByIf() {
 		Blog conditionBlog = new Blog();
-		//conditionBlog.setTitle("ÇÏ´Ã");
-		Author author = new Author("¹Ú¼®Àç","","");
+		//conditionBlog.setTitle("í•˜ëŠ˜");
+		Author author = new Author("ë°•ì„ì¬","","");
 		author.setId("demonpark");
 		conditionBlog.setAuthor(author);
 		Blog blog = dao.findBlogByCondition(conditionBlog);
 		
 		assertEquals("mybatis", blog.getPosts().get(0).getSubject());
-		assertEquals("mybatisÀÇ ÀÌÇØ¿Í Àû¿ë", blog.getPosts().get(0).getContents());
+		assertEquals("mybatisì˜ ì´í•´ì™€ ì ìš©", blog.getPosts().get(0).getContents());
 	}
 
 }

@@ -23,7 +23,7 @@ public class SqlSessionFactoryProvider {
 			factory = new SqlSessionFactoryBuilder().build(reader);
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new RuntimeException("SqlSessionFactory »ı¼ºÁß ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			throw new RuntimeException("SqlSessionFactory ìƒì„±ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 		}
 	}
 	
