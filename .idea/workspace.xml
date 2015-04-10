@@ -1,30 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3418bedf-7868-4ae6-a67b-4d0aaf28cb51" name="Default" comment="InteliJ Initialize">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_8_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_14.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_29.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_2_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/nexblog_ver0.3.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="3418bedf-7868-4ae6-a67b-4d0aaf28cb51" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/namoo/mybatis/blog/AuthorDaoTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/namoo/mybatis/blog/AuthorDaoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/namoo/mybatis/blog/impl/BlogDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/namoo/mybatis/blog/impl/BlogDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/namoo/mybatis/blog/BlogDaoTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/namoo/mybatis/blog/BlogDaoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/namoo/mybatis/blog/domain/Gender.java" afterPath="$PROJECT_DIR$/src/main/java/com/namoo/mybatis/blog/domain/Gender.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/namoo/mybatis/blog/PostDaoTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/namoo/mybatis/blog/PostDaoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/namoo/mybatis/blog/impl/SqlSessionFactoryProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/namoo/mybatis/blog/impl/SqlSessionFactoryProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/datasource.properties" afterPath="$PROJECT_DIR$/src/test/resources/datasource.properties" />
     </list>
     <ignored path="nexblog_ver0.3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -742,12 +720,19 @@
       <created>1428642950490</created>
       <option name="number" value="Default" />
       <updated>1428642950490</updated>
-      <workItem from="1428642952016" duration="2838000" />
+      <workItem from="1428642952016" duration="2895000" />
     </task>
+    <task id="LOCAL-00001" summary="InteliJ Initialize">
+      <created>1428645819262</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1428645819262</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2838000" />
+    <option name="totallyTimeSpent" value="2895000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
