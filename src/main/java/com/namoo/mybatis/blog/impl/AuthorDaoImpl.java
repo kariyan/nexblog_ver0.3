@@ -55,7 +55,7 @@ public class AuthorDaoImpl implements AuthorDao {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		Author author = null;
 		try{
-			author = (Author) sqlSession.selectOne("com.namoo.mybatis.blog.mapper.AuthorMapper.findAuthor", id);
+			author = sqlSession.selectOne("com.namoo.mybatis.blog.mapper.AuthorMapper.findAuthor", id);
 			log.debug("author: " + author);
 		} finally {
 			sqlSession.close();
@@ -78,26 +78,54 @@ public class AuthorDaoImpl implements AuthorDao {
 
 	@Override
 	public List<Author> findAuthorsByIds(List<String> ids) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<Author> authors = null;
+		try {
+			AuthorMapper mapper = sqlSession.getMapper(AuthorMapper.class);
+			authors = mapper.findAuthorsByIds(ids);
+		} finally {
+			sqlSession.close();
+		}
+		return authors;
 	}
 	
 	@Override
 	public List<Author> findAuthorByCondition(Map<String, String> conditionMap) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<Author> authors = null;
+		try {
+			AuthorMapper mapper = sqlSession.getMapper(AuthorMapper.class);
+			authors = mapper.findAuthorByCondition(conditionMap);
+		} finally {
+			sqlSession.close();
+		}
+		return authors;
 	}
 	
 	@Override
-	public List<Author> findAuthorByConditionByBuilder(Map<String,String> conditionMap) {
-		// TODO Auto-generated method stub
-		return null;
-	}	
+	public List<Author> findAuthorByConditionByBuilder(Map<String, String> conditionMap) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<Author> authors = null;
+		try {
+			AuthorMapper mapper = sqlSession.getMapper(AuthorMapper.class);
+			authors = mapper.findAuthorByConditionByBuilder(conditionMap);
+		} finally {
+			sqlSession.close();
+		}
+		return authors;
+	}
 	
 	@Override
 	public List<Author> findAuthorsByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<Author> authors = null;
+		try {
+			AuthorMapper mapper = sqlSession.getMapper(AuthorMapper.class);
+			authors = mapper.findAuthorsByName(name);
+		} finally {
+			sqlSession.close();
+		}
+		return authors;
 	}
 
 	@Override
@@ -109,13 +137,21 @@ public class AuthorDaoImpl implements AuthorDao {
 			sqlSession.commit();
 		}finally{
 			sqlSession.clearCache();
+			sqlSession.close();
 		}		
 	}
 
 	@Override
 	public int updateAuthor(Author author) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int cnt = 0;
+		try {
+			AuthorMapper mapper = sqlSession.getMapper(AuthorMapper.class);
+			cnt = mapper.updateAuthor(author);
+		} finally {
+			sqlSession.close();
+		}
+		return cnt;
 	}
 
 	@Override

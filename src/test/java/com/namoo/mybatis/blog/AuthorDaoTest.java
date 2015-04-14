@@ -2,6 +2,7 @@ package com.namoo.mybatis.blog;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,7 +84,6 @@ public class AuthorDaoTest {
 		conditionMap.remove("id");
 		authors = dao.findAuthorByCondition(conditionMap);
 		assertEquals(4,authors.size());
-		
 	}
 	
 	@Test
@@ -102,43 +102,44 @@ public class AuthorDaoTest {
 		conditionMap.put("name", "김현오");
 		authors = dao.findAuthorByConditionByBuilder(conditionMap);
 		assertEquals("김현오",authors.get(0).getName());	
-
-	}	
+	}
 	
 	@Test
 	public void testUpdateAuthor() {
-		
+
+		// verify
 		String id = "demonPark";
 		Author author = dao.findAuthor(id);
 		assertEquals("demonpark@nextree.co.kr", author.getEmail());
-		
+
+		// set
 		author.setEmail("demonpsj@nextree.co.kr");
-		
 		dao.updateAuthor(author);
 		
+		// execute
 		Author updateAuthor = dao.findAuthor(id);
-		
-		assertEquals("demonpark@nextree.co.kr", updateAuthor.getEmail());
-		
+		assertEquals("demonpsj@nextree.co.kr", updateAuthor.getEmail());
+
+		// data reset
+		author.setEmail("demonpark@nextree.co.kr");
+		dao.updateAuthor(author);
 	}
 	
 	@Test
 	public void testDeleteAuthor() {
 		
 		List<Author> authors = dao.findAllAuthors();
-		assertEquals(3,authors.size());
+		assertEquals(4,authors.size());
 		
 		Author insertAuthor = new Author("삽입유저","0000","insertUser@nextree.co.kr");
 		insertAuthor.setId("insertUser");
 		
 		dao.registAuthor(insertAuthor);
-		
-		assertEquals(4,dao.findAllAuthors().size());
+		assertEquals(5, dao.findAllAuthors().size());
 		
 		String id = "insertUser";
 		dao.deleteAuthor(id);
 		
-		assertEquals(3,dao.findAllAuthors().size());
+		assertEquals(4,dao.findAllAuthors().size());
 	}
-			
 }

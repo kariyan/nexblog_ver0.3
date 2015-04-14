@@ -25,63 +25,129 @@ public class BlogDaoImpl implements BlogDao {
 
 	@Override
 	public Blog findBlog(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			return mapper.findBlog(id);
+
+		} finally {
+			sqlSession.close();
+		}
 	}
 	
 	@Override
-	public Blog findBlogByAuthorId(String authorId){
-		// TODO 매퍼객체를 생성하여 Sql매핑문 호출하기
-		return null;
+	public List<Blog> findBlogByAuthorId(String authorId){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+
+			return mapper.findBlogByAuthorId(authorId);
+		} finally {
+			sqlSession.close();
+		}
 	}
-	
-	
+
 	@Override
 	public List<Blog> findAllBlogs() {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			return mapper.findAllBlogs();
+
+		} finally {
+			sqlSession.close();
+		}
 	}
 
 	@Override
 	public List<Blog> findBlogsByTitle(String title) {
-		// TODO session의 메소드를 사용하여 Sql매핑문 호출하기
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<Blog> blog = null;
+
+		try {
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			blog = mapper.findBlogsByTitle(title);
+		} finally {
+			sqlSession.close();
+		}
+		return blog;
 	}
 	
 	@Override
 	public Blog selectBlogWithAuthor(int id) {
-		// TODO Nested Result
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		Blog blog = null;
+
+		try {
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			blog = mapper.selectBlogWithAuthor(id);
+		} finally {
+			sqlSession.close();
+		}
+		return blog;
 	}
 
 	@Override
 	public Blog selectBlogWithPost(int id) {
-		// TODO Nested Result
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		Blog blog = null;
+
+		try {
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			blog = mapper.selectBlogWithPost(id);
+		} finally {
+			sqlSession.close();
+		}
+		return blog;
 	}
 
 	@Override
 	public void registBlog(Blog blog) {
-		// TODO Auto-generated method stub
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
+		try {
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			mapper.registBlog(blog);
+		} finally {
+			sqlSession.close();
+		}
 	}
 
 	@Override
 	public int updateBlog(Blog blog) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		try {
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			return mapper.updateBlog(blog);
+		} finally {
+			sqlSession.close();
+		}
 	}
 
 	@Override
 	public int deleteBlog(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+		try {
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			return mapper.deleteBlog(id);
+		} finally {
+			sqlSession.close();
+		}
 	}
 
 	@Override
 	public Blog findBlogByCondition(Blog blog) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		Blog createdBlog = null;
 
+		try {
+			BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+			createdBlog = mapper.findBlogByCondition(blog);
+		} finally {
+			sqlSession.close();
+		}
+		return createdBlog;
+	}
 }

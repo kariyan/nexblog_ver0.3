@@ -34,7 +34,36 @@
 	
 	<insert id="registAuthor" parameterType="Author">
 		INSERT INTO author_tb (id, password, name, email)
-		values(#{id},#{password},#{name},#{email})
+		VALUES (#{id},#{password},#{name},#{email})
 	</insert>
-	 	
+
+	<update id="deleteAuthor" parameterType="Author">
+		DELETE FROM author_tb
+		WHERE id = #{id}
+	</update>
+
+	<select id="findAuthorsByIds" resultType="Author">
+		<include refid="selectAuthor"/>
+		WHERE id IN
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+	<select id="findAuthorByCondition" parameterType="map" resultType="Author">
+		<include refid="selectAuthor"/>
+		<where>
+			<if test="id != null">id = #{id}</if>
+		</where>
+	</select>
+
+	<update id="updateAuthor" parameterType="Author" keyProperty="id" keyColumn="id">
+		UPDATE author_tb
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="email != null">email = #{email},</if>
+		</trim>
+		WHERE id = #{id}
+	</update>
 </mapper>

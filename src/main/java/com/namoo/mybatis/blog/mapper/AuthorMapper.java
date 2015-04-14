@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.namoo.mybatis.blog.domain.Author;
+import org.apache.ibatis.annotations.Select;
 
 
 public interface AuthorMapper {
@@ -18,6 +19,7 @@ public interface AuthorMapper {
 	
 	List<Author> findAuthorByCondition(Map<String,String> conditionMap);
 
+	@Select("SELECT password, name, email FROM author_tb WHERE id = #{id}")
 	List<Author> findAuthorByConditionByBuilder(Map<String,String> conditionMap);
 	
 	List<Author> findAuthorsByName(String name);

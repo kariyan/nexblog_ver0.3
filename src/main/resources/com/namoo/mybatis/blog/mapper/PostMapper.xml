@@ -6,6 +6,41 @@
 
 <mapper namespace="com.namoo.mybatis.blog.mapper.PostMapper">
 
+	<resultMap id="PostMap" type="Post">
+		<id property="id" column="id"/>
+		<result property="subject" column="subject"/>
+		<result property="contents" column="contents"/>
+		<result property="createdOn" column="createdOn"/>
+		<association property="author" javaType="Author" column="author_id" select="com.namoo.mybatis.blog.mapper.AuthorMapper.findAuthor"/>
+		<association property="blog" javaType="Blog" column="blog_id" select="com.namoo.mybatis.blog.mapper.BlogMapper.findBlog"/>
+		<collection property="comments" column="comment_id" ofType="Comment">
+			<id property="id" column="comment_id"/>
+			<result property="name" column="comment_name"/>
+			<result property="comment" column="comment"/>
+		</collection>
+		<collection property="tags" column="tag_id" ofType="Tag">
+			<id property="id" column="tag_id"/>
+			<result property="name" column="tag_name"/>
+		</collection>
+	</resultMap>
+	<select id="findAllPost" resultMap="PostMap">
+		SELECT p.id,
+			p.subject,
+			p.contents,
+			p.author_id,
+			p.blog_id,
+			c.id comment_id,
+			c.name comment_name,
+			c.comment,
+			t.id tag_id,
+			t.name tag_name
+		FROM post_tb p
+		LEFT OUTER JOIN comment_tb c
+			ON p.id = c.post_id
+		LEFT OUTER JOIN tag_tb t
+			ON p.id = t.post_id
+	</select>
+
 	<insert id="registPost" parameterType="Post" useGeneratedKeys="true" keyProperty="id">
 		<selectKey keyProperty="id" resultType="int" order="BEFORE">
 		  SELECT LAST_INSERT_ID()		

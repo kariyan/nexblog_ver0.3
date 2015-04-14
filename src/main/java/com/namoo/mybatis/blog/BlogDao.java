@@ -4,12 +4,11 @@ import java.util.List;
 
 import com.namoo.mybatis.blog.domain.Blog;
 
-
-
 public interface BlogDao {
+
 	Blog findBlog(int id);
 
-	Blog findBlogByAuthorId(String authorId);
+	List<Blog> findBlogByAuthorId(String authorId);
 	
 	List<Blog> findAllBlogs();
 

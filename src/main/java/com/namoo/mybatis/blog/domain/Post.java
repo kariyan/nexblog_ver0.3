@@ -13,8 +13,6 @@ public class Post {
 	private List<Comment> comments;
 	private List<Tag> tags;
 
-	
-	
 	public int getId() {
 		return id;
 	}

@@ -3,14 +3,13 @@ package com.namoo.mybatis.blog.mapper;
 import java.util.List;
 
 import com.namoo.mybatis.blog.domain.Blog;
-
-
+import org.apache.ibatis.annotations.Select;
 
 public interface BlogMapper {
-	
+
 	Blog findBlog(int id);
 
-	Blog findBlogByAuthorId(String authorId);	
+	List<Blog> findBlogByAuthorId(String authorId);
 
 	List<Blog> findAllBlogs();
 
@@ -27,8 +26,4 @@ public interface BlogMapper {
 	Blog selectBlogWithPost(int id);
 
 	Blog findBlogByCondition(Blog blog);
-
-	
-	
-	
 }
